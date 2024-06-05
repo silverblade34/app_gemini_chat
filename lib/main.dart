@@ -9,6 +9,7 @@ void main() {
       colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       useMaterial3: true,
     ),
+    debugShowCheckedModeBanner: false,
     defaultTransition: Transition.fadeIn,
     initialRoute: Routes.HOME,
     getPages: AppPages.pages,

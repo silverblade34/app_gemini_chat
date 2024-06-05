@@ -1,4 +1,5 @@
 import 'package:app_gemini_chat/app/data/models/message_model.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -9,4 +10,6 @@ class HomeController extends GetxController {
     MessageModel(text: "Great and you ?", isUser: false),
     MessageModel(text: "I'am excelent", isUser: true),
   ];
+
+  TextEditingController inputMessage = TextEditingController();
 }

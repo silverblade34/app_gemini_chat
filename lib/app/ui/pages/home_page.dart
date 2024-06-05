@@ -9,38 +9,87 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Chat')),
-      body: ListView.builder(
-        itemCount: controller.messages.length,
-        itemBuilder: (context, index) {
-          final message = controller.messages[index];
-          return ListTile(
-            title: Align(
-              alignment: message.isUser ? Alignment.centerRight : Alignment.centerLeft,
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: message.isUser ? Colors.blue[300] : Colors.grey[300],
-                  borderRadius: message.isUser
-                      ? const BorderRadius.only(
-                          topLeft: Radius.circular(13),
-                          bottomRight: Radius.circular(13),
-                          bottomLeft: Radius.circular(13),
-                        )
-                      : const BorderRadius.only(
-                          topRight: Radius.circular(13),
-                          bottomRight: Radius.circular(13),
-                          bottomLeft: Radius.circular(13),
-                        ),
-                ),
-                child: Text(
-                  message.text,
-                  style: TextStyle(
-                      color: message.isUser ? Colors.white : Colors.black),
-                ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: controller.messages.length,
+              itemBuilder: (context, index) {
+                final message = controller.messages[index];
+                return ListTile(
+                  title: Align(
+                    alignment: message.isUser
+                        ? Alignment.centerRight
+                        : Alignment.centerLeft,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: message.isUser
+                            ? Colors.blue[300]
+                            : Colors.grey[300],
+                        borderRadius: message.isUser
+                            ? const BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15),
+                                bottomLeft: Radius.circular(15),
+                              )
+                            : const BorderRadius.only(
+                                topRight: Radius.circular(15),
+                                bottomRight: Radius.circular(15),
+                                bottomLeft: Radius.circular(15),
+                              ),
+                      ),
+                      child: Text(
+                        message.text,
+                        style: TextStyle(
+                            color:
+                                message.isUser ? Colors.white : Colors.black),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 3,
+                    blurRadius: 3,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: controller.inputMessage,
+                      decoration: const InputDecoration(
+                        hintText: "Escribe tu mensaje",
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.send),
+                  )
+                ],
               ),
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
