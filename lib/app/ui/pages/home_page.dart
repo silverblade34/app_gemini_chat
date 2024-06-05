@@ -8,7 +8,35 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Chat')),
+      appBar: AppBar(
+        centerTitle: false,
+        backgroundColor: Colors.white,
+        elevation: 4,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Image.asset(
+                  'assets/gpt-robot.png',
+                  width: 18,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const Text(
+                  "Gemini Gpt",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 77, 77, 77),
+                    fontSize: 17,
+                  ),
+                )
+              ],
+            ),
+            Image.asset('assets/volume-high.png', color: Colors.blue[800])
+          ],
+        ),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -81,9 +109,12 @@ class HomePage extends GetView<HomeController> {
                   const SizedBox(
                     width: 8,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.send),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: GestureDetector(
+                      child: Image.asset("assets/send.png"),
+                      onTap: () {},
+                    ),
                   )
                 ],
               ),
