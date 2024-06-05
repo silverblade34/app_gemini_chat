@@ -9,6 +9,7 @@ class OnboardingPage extends GetView<OnboardingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +32,10 @@ class OnboardingPage extends GetView<OnboardingController> {
                 Text(
                   "Con este software, puedes dar solución a tus preguntas utilizando el asistente de inteligencia artificial.",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, color: Colors.black54),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black54,
+                  ),
                 ),
               ],
             ),

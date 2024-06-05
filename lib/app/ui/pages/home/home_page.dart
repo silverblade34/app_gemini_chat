@@ -9,9 +9,10 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 4,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,9 +55,8 @@ class HomePage extends GetView<HomeController> {
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: message.isUser
-                            ? PRIMARY_LIGHT
-                            : Colors.grey[300],
+                        color:
+                            message.isUser ? PRIMARY_LIGHT : Colors.grey[300],
                         borderRadius: message.isUser
                             ? const BorderRadius.only(
                                 topLeft: Radius.circular(15),
@@ -114,7 +114,10 @@ class HomePage extends GetView<HomeController> {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: GestureDetector(
-                      child: Image.asset("assets/send.png", color: PRIMARY_LIGHT,),
+                      child: Image.asset(
+                        "assets/send.png",
+                        color: PRIMARY_LIGHT,
+                      ),
                       onTap: () {},
                     ),
                   )
