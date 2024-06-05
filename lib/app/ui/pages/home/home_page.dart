@@ -1,4 +1,5 @@
 import 'package:app_gemini_chat/app/controllers/home_controller.dart';
+import 'package:app_gemini_chat/app/utils/style_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +20,7 @@ class HomePage extends GetView<HomeController> {
               children: [
                 Image.asset(
                   'assets/gpt-robot.png',
+                  color: PRIMARY_LIGHT,
                   width: 18,
                 ),
                 const SizedBox(
@@ -33,7 +35,7 @@ class HomePage extends GetView<HomeController> {
                 )
               ],
             ),
-            Image.asset('assets/volume-high.png', color: Colors.blue[800])
+            Image.asset('assets/volume-high.png', color: PRIMARY_LIGHT)
           ],
         ),
       ),
@@ -53,7 +55,7 @@ class HomePage extends GetView<HomeController> {
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: message.isUser
-                            ? Colors.blue[300]
+                            ? PRIMARY_LIGHT
                             : Colors.grey[300],
                         borderRadius: message.isUser
                             ? const BorderRadius.only(
@@ -112,7 +114,7 @@ class HomePage extends GetView<HomeController> {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: GestureDetector(
-                      child: Image.asset("assets/send.png"),
+                      child: Image.asset("assets/send.png", color: PRIMARY_LIGHT,),
                       onTap: () {},
                     ),
                   )
