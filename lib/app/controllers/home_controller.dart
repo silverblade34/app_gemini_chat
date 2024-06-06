@@ -5,24 +5,19 @@ import 'package:get/get.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 class HomeController extends GetxController {
-  final List<MessageModel> messages = [
-    MessageModel(text: "Hi", isUser: true),
-    MessageModel(text: "Hello, what's up ?", isUser: false),
-    MessageModel(text: "Great and you ?", isUser: true),
-    MessageModel(text: "Great and you ?", isUser: false),
-    MessageModel(text: "I'am excelent", isUser: true),
-  ];
+  RxList<MessageModel> messages = RxList([]);
 
   TextEditingController inputMessage = TextEditingController();
 
-    callGeminiModel() async {
+  callGeminiModel() async {
+    final inputChat = inputMessage.text;
+    inputMessage.text = "";
+    messages.add(MessageModel(text: inputChat, isUser: true));
     final model = GenerativeModel(
         model: "gemini-pro", apiKey: dotenv.env['GOOGLE_API_KEY']!);
-    final prompt = inputMessage.text.trim();
+    final prompt = inputChat.trim();
     final content = [Content.text(prompt)];
     final response = await model.generateContent(content);
-    print("-------------------------------------");
-    print(response.text!);
+    messages.add(MessageModel(text: response.text!, isUser: false));
   }
-
 }

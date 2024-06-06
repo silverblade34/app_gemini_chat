@@ -42,43 +42,45 @@ class HomePage extends GetView<HomeController> {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: controller.messages.length,
-              itemBuilder: (context, index) {
-                final message = controller.messages[index];
-                return ListTile(
-                  title: Align(
-                    alignment: message.isUser
-                        ? Alignment.centerRight
-                        : Alignment.centerLeft,
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color:
-                            message.isUser ? PRIMARY_LIGHT : Colors.grey[300],
-                        borderRadius: message.isUser
-                            ? const BorderRadius.only(
-                                topLeft: Radius.circular(15),
-                                bottomRight: Radius.circular(15),
-                                bottomLeft: Radius.circular(15),
-                              )
-                            : const BorderRadius.only(
-                                topRight: Radius.circular(15),
-                                bottomRight: Radius.circular(15),
-                                bottomLeft: Radius.circular(15),
-                              ),
-                      ),
-                      child: Text(
-                        message.text,
-                        style: TextStyle(
-                            color:
-                                message.isUser ? Colors.white : Colors.black),
+          Obx(
+            () => Expanded(
+              child: ListView.builder(
+                itemCount: controller.messages.length,
+                itemBuilder: (context, index) {
+                  final message = controller.messages[index];
+                  return ListTile(
+                    title: Align(
+                      alignment: message.isUser
+                          ? Alignment.centerRight
+                          : Alignment.centerLeft,
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color:
+                              message.isUser ? PRIMARY_LIGHT : Colors.grey[300],
+                          borderRadius: message.isUser
+                              ? const BorderRadius.only(
+                                  topLeft: Radius.circular(15),
+                                  bottomRight: Radius.circular(15),
+                                  bottomLeft: Radius.circular(15),
+                                )
+                              : const BorderRadius.only(
+                                  topRight: Radius.circular(15),
+                                  bottomRight: Radius.circular(15),
+                                  bottomLeft: Radius.circular(15),
+                                ),
+                        ),
+                        child: Text(
+                          message.text,
+                          style: TextStyle(
+                              color:
+                                  message.isUser ? Colors.white : Colors.black),
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
           Padding(
