@@ -118,7 +118,9 @@ class HomePage extends GetView<HomeController> {
                         "assets/send.png",
                         color: PRIMARY_LIGHT,
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        controller.callGeminiModel();
+                      },
                     ),
                   )
                 ],
